@@ -47,9 +47,16 @@
       <div id="global"></div>
       <div id="title">
       </div>
-      <div id="menucontainer">
+      <div id="menucontainer"> 
+        <div id="nick-alert" style="display: none">
+          <h3>You must enter you nickname!</h3>
+        </div>
+        <div id="nick"> 
+          <input id="input-nick" class="write-nick" type="text" placeholder="Your Nick" required autofocus>
+        </div>
         <div id="menu">
           <div id="start">Start</div>
+          <div id="s-ranking">Ranking</div>
           <div id="s-controlType">Controls: Keyboard</div>
           <div id="s-quality">Quality: High</div>
           <div id="s-hud">HUD: On</div>
@@ -80,6 +87,10 @@
       <h3>Graphics</h3>
       <p><b>HexMKI base model</b><br>Charnel</p>
       <p><b>Track texture</b><br>Nobiax</p>
+      <h4>Click anywhere to continue.</h4>
+    </div>
+    <div id="ranking" style="display: none">
+      <h3>Ranking</h3>
       <h4>Click anywhere to continue.</h4>
     </div>
 

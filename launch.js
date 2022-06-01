@@ -84,6 +84,17 @@
     return $('credits').style.display = 'none';
   };
 
+  $('s-ranking').onclick = function() {
+    $('step-1').style.display = 'none';
+    return $('ranking').style.display = 'block';
+  };
+
+  $('ranking').onclick = function() {
+    $('step-1').style.display = 'block';
+    return $('ranking').style.display = 'none';
+  };
+
+
   hasWebGL = function() {
     var canvas, gl;
     gl = null;
@@ -107,9 +118,14 @@
     };
   } else {
     $('start').onclick = function() {
-      $('step-1').style.display = 'none';
-      $('step-2').style.display = 'block';
-      return $('step-2').style.backgroundImage = "url(css/help-" + s[0][3] + ".png)";
+      var nick = document.getElementById("input-nick").value;
+      if(nick) {
+        $('step-1').style.display = 'none';
+        $('step-2').style.display = 'block';
+        return $('step-2').style.backgroundImage = "url(css/help-" + s[0][3] + ".png)";
+      } else{
+        return $('nick-alert').style.display = 'block';
+      }
     };
   }
 
