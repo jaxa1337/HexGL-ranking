@@ -122,7 +122,7 @@
       if(nick) {
         $('step-1').style.display = 'none';
         $('step-2').style.display = 'block';
-        return $('step-2').style.backgroundImage = "url(css/help-" + s[0][3] + ".png)";
+        return $('step-2').style.backgroundImage = "url(static/css/help-" + s[0][3] + ".png)";
       } else{
         return $('nick-alert').style.display = 'block';
       }
