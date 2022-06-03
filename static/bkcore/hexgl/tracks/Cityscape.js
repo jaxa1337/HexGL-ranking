@@ -62,7 +62,7 @@ bkcore.hexgl.tracks.Cityscape = {
 					'bonus.base.diffuse'				: "static/textures/bonus/base/diffuse.jpg"
 				},
 				texturesCube: {
-					'skybox.dawnclouds'					: "textures/skybox/dawnclouds/%1.jpg"
+					'skybox.dawnclouds'					: "static/textures/skybox/dawnclouds/%1.jpg"
 				},
 				geometries: {
 					'bonus.base'						: "static/geometries/bonus/base/base.js",
