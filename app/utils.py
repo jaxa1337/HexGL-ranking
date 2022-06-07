@@ -23,7 +23,7 @@ def saved_user_score(nick: str, score: float):
     scores = check_score(nick, score)
     if scores:
         with open("./data/users_scores.json", 'w') as json_file:
-            json.dump(scores, json_file)
+            json.dump(scores, json_file, indent=4)
             print('Score saved!')
             return 1
     else:
@@ -39,7 +39,7 @@ def check_score(nick: str, score: float):
                 print(scores)
                 return scores
             else:
-                print('Score is lower then previous one.')
+                print('Score is lower than previous one.')
                 return 0
         else:
             scores[nick] = score

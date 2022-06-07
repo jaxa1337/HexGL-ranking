@@ -165,6 +165,7 @@ bkcore.hexgl.HexGL.prototype.initGameplay = function()
 		analyser: this.track.analyser,
 		pixelRatio: this.track.pixelRatio,
 		track: this.track,
+		player: this.player,
 		onFinish: function() {
 			self.components.shipControls.terminate();
 			self.displayScore(this.finishTime, this.lapTimes);

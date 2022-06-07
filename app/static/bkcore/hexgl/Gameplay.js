@@ -14,7 +14,7 @@ bkcore.hexgl.Gameplay = function(opts)
 
 	this.startDelay = opts.hud == null ? 0 : 1000;
 	this.countDownDelay = opts.hud == null ? 1000 : 1500;
-
+	this.player = opts.player == undefined ? "Anonym" : opts.player;
 	this.active = false;
 	this.timer = new bkcore.Timer();
 	this.modes = {
@@ -70,6 +70,7 @@ bkcore.hexgl.Gameplay = function(opts)
 			if(self.lap == this.maxLaps)
 			{
 				self.end(self.results.FINISH);
+				self.save_score();
 			}
 			else
 			{
@@ -228,4 +229,23 @@ bkcore.hexgl.Gameplay.prototype.checkPoint = function()
 		return color.b;
 	else
 		return -1;
+}
+
+bkcore.hexgl.Gameplay.prototype.save_score = function()
+{
+	var nickname = this.player
+	var score_value = this.finishTime
+	const response = new XMLHttpRequest();
+
+	const json = JSON.stringify({
+		nick: nickname,
+		score: score_value
+	});
+
+	response.open("POST", "http://127.0.0.1:8000/user_data");
+	response.setRequestHeader("Accept", "application/json");
+	response.setRequestHeader("Content-Type", "application/json");
+	response.send(json);
+
+	
 }

@@ -5,6 +5,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
 from utils import saved_user_score
 class UserData(BaseModel):
@@ -12,6 +13,20 @@ class UserData(BaseModel):
     score: float
 
 app = FastAPI(title="HexGL")
+
+origins = [
+    "http://localhost:8000/",
+    "http://localhost:8000/user_data",
+    "http://127.0.0.1:8000/user_data"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["POST"],
+    allow_headers=["Content-Type"],
+)
 
 logging.basicConfig(level="DEBUG")
 logger = logging.getLogger(__name__)
