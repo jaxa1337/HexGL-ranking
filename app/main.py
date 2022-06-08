@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from utils import saved_user_score, get_scores
 class UserData(BaseModel):
     nick: str
-    score: str
+    score: int
 
 app = FastAPI(title="HexGL")
 

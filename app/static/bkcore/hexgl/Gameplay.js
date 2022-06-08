@@ -234,7 +234,7 @@ bkcore.hexgl.Gameplay.prototype.checkPoint = function()
 bkcore.hexgl.Gameplay.prototype.save_score = function()
 {
 	var nickname = this.player;
-	var score_value = this.score;
+	var score_value = this.finishTime;
 	const response = new XMLHttpRequest();
 
 	const json = JSON.stringify({
