@@ -1,4 +1,6 @@
 import json
+import math
+import ast
 
 def save_new_nick(nick: str):
     status = check_nickname(nick)
@@ -24,7 +26,6 @@ def saved_user_score(nick: str, score: float):
     if scores:
         with open("./data/users_scores.json", 'w') as json_file:
             json.dump(scores, json_file, indent=4)
-            print('Score saved!')
             return 1
     else:
         return 0
@@ -36,14 +37,11 @@ def check_score(nick: str, score: float):
         if nick in scores.keys():
             if scores[nick] > score:
                 scores[nick] = score
-                print(scores)
                 return scores
             else:
-                print('Time is bigger than previous one.')
                 return 0
         else:
             scores[nick] = score
-            print(scores)
             return scores
 
 def get_scores() -> dict():
@@ -52,7 +50,26 @@ def get_scores() -> dict():
         scores = json.load(json_file)
         return scores
 
-        
+def convert_to_time(num: int) -> str():
+    ms = num % 1000
+    s = math.floor((num / 1000) % 60)
+    m = math.floor((num / 60000) % 60)
+    return str(m) + ":" + str(s) + ":" + str(ms)
 
-    
-    
+def sort_scores() -> dict():
+    scores = get_scores()
+    scores = {key: value for key, value in sorted(scores.items(), key=lambda item: item[1])}
+    for key in scores:
+        new_value = convert_to_time(scores[key])
+        scores[key] = new_value
+    with open("./data/times.json", 'w') as json_file:
+            json.dump(scores, json_file, indent=4)
+            return 1
+    return scores
+
+def get_times_json() -> dict():
+    scores = {}
+    sort_scores()
+    with open("./data/times.json") as json_file:
+        scores = json.load(json_file)
+    return scores

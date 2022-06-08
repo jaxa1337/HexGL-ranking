@@ -1,4 +1,6 @@
 import logging
+import json
+import typing
 from pydantic import BaseModel
 
 from fastapi import FastAPI, Request, status
@@ -6,8 +8,9 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.encoders import jsonable_encoder
 
-from utils import saved_user_score, get_scores
+from utils import saved_user_score, get_scores, get_times_json, sort_scores
 class UserData(BaseModel):
     nick: str
     score: int
@@ -44,17 +47,24 @@ async def get_users_data(request: Request):
     scores = get_scores()
     return JSONResponse(content=scores, status_code=200)
 
+@app.get("/times")
+async def get_times(request: Request):
+    scores = get_times_json()
+    logger.debug(f"{scores}")
+    return JSONResponse(content=scores, status_code=200)
+
 @app.post("/user_data")
 async def post_users_data(request: Request, user_data: UserData):
     logger.debug(f"POST -> DATA: {user_data}")
     nick = user_data.nick
     score = user_data.score
     score_status = saved_user_score(nick, score)
+    sort_scores()
     
     if score_status:
         return JSONResponse(content="Score saved", status_code=200)
     else:
-        return JSONResponse(content="Score is lower then previos one!", status_code=409)
+        return JSONResponse(content="Score is lower than previos one!", status_code=409)
     
 
 

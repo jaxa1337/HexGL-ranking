@@ -338,7 +338,7 @@ html, body {
   color: white;
   font-size: 2em;
   width: 100%;
-  max-width: 700px;
+  height: 100%;
 }
 
 #nick-alert {
@@ -353,4 +353,10 @@ html, body {
 }
 
 #users_scores {
+  margin: auto;
+  overflow-y: scroll;
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  max-height: 700px;
 }

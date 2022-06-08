@@ -88,19 +88,19 @@
   $('s-ranking').onclick = function() {
     $('step-1').style.display = 'none';
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "http://127.0.0.1:8000/user_data")
+    xmlHttp.open("GET", "http://127.0.0.1:8000/times")
     xmlHttp.send(null)
     // var users_scores = xmlHttp.responseText
     xmlHttp.onload = function() {
-      const myObj = JSON.parse(this.responseText);
+      const myObj = sortByValue(JSON.parse(this.responseText));
       let text = "<table>"
       nicknames = Object.keys(myObj)
-      for (let x in nicknames) {
+      for (let x in myObj) {
         index = parseInt(x);
         index += parseInt(1);
         text += "<tr><td style='text-align: right;'>" + index + "." + "</td>"; //index
-        text += "<td style='text-align: left;'>" + nicknames[x] + "</td>"; //nick
-        text += "<td style='text-align: right;'>" + myObj[nicknames[x]] + "</td></tr>"; //scores
+        text += "<td style='text-align: left;'>" + myObj[x][1] + "</td>"; //nick
+        text += "<td style='text-align: right;'>" + myObj[x][0] + "</td></tr>"; //scores
       }
       text += "</table>"    
       document.getElementById("users_scores").innerHTML = text;
@@ -149,3 +149,15 @@
   }
 
 }).call(this);
+
+function sortByValue(jsObj){
+  var sortedArray = [];
+  for(var i in jsObj)
+  {
+      // Push each JSON Object entry in array by [value, key]
+      var key = i
+      var value = jsObj[i]
+      sortedArray.push([value, key]);
+  }
+  return sortedArray.sort();
+}
