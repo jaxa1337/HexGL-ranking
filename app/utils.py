@@ -54,7 +54,24 @@ def convert_to_time(num: int) -> str():
     ms = num % 1000
     s = math.floor((num / 1000) % 60)
     m = math.floor((num / 60000) % 60)
-    return str(m) + ":" + str(s) + ":" + str(ms)
+    result = ""
+    if m < 10:
+        result = "0" + str(m) + ":"
+    else: 
+        result = str(m) + ":"
+    
+    if s < 10:
+        result += "0" + str(s) + ":"
+    else:
+        result += str(s) + ":"
+
+    if ms < 10:
+        result += "00" + str(ms)
+    elif ms < 100:
+        result += "0" + str(ms)
+    else:
+        result += str(ms)
+    return result
 
 def sort_scores() -> dict():
     scores = get_scores()
