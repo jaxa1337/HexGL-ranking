@@ -45,6 +45,13 @@ def check_score(nick: str, score: float):
             scores[nick] = score
             print(scores)
             return scores
+
+def get_scores() -> dict():
+    scores = {}
+    with open("./data/users_scores.json") as json_file:
+        scores = json.load(json_file)
+        return scores
+
         
 
     

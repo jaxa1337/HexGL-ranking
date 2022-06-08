@@ -246,6 +246,4 @@ bkcore.hexgl.Gameplay.prototype.save_score = function()
 	response.setRequestHeader("Accept", "application/json");
 	response.setRequestHeader("Content-Type", "application/json");
 	response.send(json);
-
-	
 }

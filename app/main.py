@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 
-from utils import saved_user_score
+from utils import saved_user_score, get_scores
 class UserData(BaseModel):
     nick: str
     score: float
@@ -39,8 +39,13 @@ templates = Jinja2Templates(directory="static")
 async def main_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/user_data")
+async def get_users_data(request: Request):
+    scores = get_scores()
+    return JSONResponse(content=scores, status_code=200)
+
 @app.post("/user_data")
-async def post_user_data(request: Request, user_data: UserData):
+async def post_users_data(request: Request, user_data: UserData):
     logger.debug(f"POST -> DATA: {user_data}")
     nick = user_data.nick
     score = user_data.score
