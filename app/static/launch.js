@@ -87,6 +87,24 @@
 
   $('s-ranking').onclick = function() {
     $('step-1').style.display = 'none';
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "http://127.0.0.1:8000/user_data")
+    xmlHttp.send(null)
+    // var users_scores = xmlHttp.responseText
+    xmlHttp.onload = function() {
+      const myObj = JSON.parse(this.responseText);
+      let text = "<table>"
+      nicknames = Object.keys(myObj)
+      for (let x in nicknames) {
+        index = parseInt(x);
+        index += parseInt(1);
+        text += "<tr><td style='text-align: right;'>" + index + "." + "</td>"; //index
+        text += "<td style='text-align: left;'>" + nicknames[x] + "</td>"; //nick
+        text += "<td style='text-align: right;'>" + myObj[nicknames[x]] + "</td></tr>"; //scores
+      }
+      text += "</table>"    
+      document.getElementById("users_scores").innerHTML = text;
+    }
     return $('ranking').style.display = 'block';
   };
 

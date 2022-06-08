@@ -34,12 +34,12 @@ def check_score(nick: str, score: float):
     with open("./data/users_scores.json") as json_file:
         scores = json.load(json_file)
         if nick in scores.keys():
-            if scores[nick] < score:
+            if scores[nick] > score:
                 scores[nick] = score
                 print(scores)
                 return scores
             else:
-                print('Score is lower than previous one.')
+                print('Time is bigger than previous one.')
                 return 0
         else:
             scores[nick] = score

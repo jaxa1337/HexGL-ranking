@@ -324,13 +324,21 @@ html, body {
   background: black;
   overflow-y: auto;
   text-align: center;
-  color: white;
+  color: rgb(211, 189, 189);
   font-size: 1.1em;
   padding: 15px 20px;
 }
 
 #ranking h3 {
   font-size: 4em;
+}
+
+#ranking table {
+  margin: auto;
+  color: white;
+  font-size: 2em;
+  width: 100%;
+  max-width: 700px;
 }
 
 #nick-alert {
@@ -342,4 +350,7 @@ html, body {
   cursor: pointer;
   color: red;
   text-align: center;
+}
+
+#users_scores {
 }
