@@ -355,8 +355,14 @@ html, body {
 #users_scores {
   margin: auto;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   display: block;
   width: 100%;
   max-width: 700px;
   max-height: 700px;
+}
+
+::-webkit-scrollbar {
+  display: none;  
 }
