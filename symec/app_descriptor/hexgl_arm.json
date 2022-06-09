@@ -1,7 +1,7 @@
 {
     "appClientFacingPorts": [
         {
-            "externalPort": 30096,
+            "externalPort": 31789,
             "innerPort": 8000,
             "protocol": "TCP"
         }
