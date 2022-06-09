@@ -1,0 +1,48 @@
+{
+    "appDescriptor": {
+        "appClientFacingPorts": [
+            {
+                "externalPort": 30096,
+                "innerPort": 8000,
+                "protocol": "TCP"
+            }
+        ],
+        "appDId": "hexgl",
+        "appDVersion": "1.0.0",
+        "appDescription": "https://hub.docker.com/repository/docker/jaxa/hexgl http://hexgl.bkcore.com",
+        "appDNSRule": [
+            {
+                "domainName": "hexgl"
+            }
+        ],
+        "appImage": "jaxa/hexgl:arm64",
+        "appName": "hexgl",
+        "appProvider": "jaxa",
+        "appSoftVersion": "1.0.0",
+        "swImageDescriptor": {
+            "checksum": "24a9e06765a1c70a10a34735360cd243d98c4f40c498df907fdda3a9ff8259f6",
+            "containerFormat": "docker-archive",
+            "diskFormat": "raw",
+            "name": "",
+            "size": "369970000",
+            "supportedVirtualisationEnvironment": [
+                "docker"
+            ],
+            "version": "1.0.0"
+        },
+        "virtualComputeDescriptor": {
+            "rootDiskSize": 0,
+            "virtualCpu": {
+                "cpuArchitecture": "arm64",
+                "numVirtualCpu": 1.0
+            },
+            "virtualMemory": {
+                "virtualMemSize": 2048
+            }
+        }
+    },
+    "appImage": "jaxa/hexgl:arm64",
+    "appPkgName": "hexgl",
+    "appPkgVersion": "1.0.0",
+    "appProvider": "jaxa"
+}

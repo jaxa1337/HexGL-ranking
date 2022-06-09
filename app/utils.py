@@ -5,7 +5,7 @@ import ast
 def save_new_nick(nick: str):
     status = check_nickname(nick)
     if status:
-        with open("./data/used_nicknames.txt", "w") as file:
+        with open("app/data/used_nicknames.txt", "w") as file:
             file.write(nick)
             return True
     else:
@@ -13,7 +13,7 @@ def save_new_nick(nick: str):
         return False
 
 def check_nickname(nick: str):
-    with open("./data/used_nicknames.txt", "r") as file:
+    with open("app/data/used_nicknames.txt", "r") as file:
         nicknames = file.read().split("\n")
         print(nicknames)
         if nick in nicknames:
@@ -24,7 +24,7 @@ def check_nickname(nick: str):
 def saved_user_score(nick: str, score: float):
     scores = check_score(nick, score)
     if scores:
-        with open("./data/users_scores.json", 'w') as json_file:
+        with open("app/data/users_scores.json", 'w') as json_file:
             json.dump(scores, json_file, indent=4)
             return 1
     else:
@@ -32,7 +32,7 @@ def saved_user_score(nick: str, score: float):
 
 def check_score(nick: str, score: float):
     scores = {}
-    with open("./data/users_scores.json") as json_file:
+    with open("app/data/users_scores.json") as json_file:
         scores = json.load(json_file)
         if nick in scores.keys():
             if scores[nick] > score:
@@ -46,7 +46,7 @@ def check_score(nick: str, score: float):
 
 def get_scores() -> dict():
     scores = {}
-    with open("./data/users_scores.json") as json_file:
+    with open("app/data/users_scores.json") as json_file:
         scores = json.load(json_file)
         return scores
 
@@ -79,7 +79,7 @@ def sort_scores() -> dict():
     for key in scores:
         new_value = convert_to_time(scores[key])
         scores[key] = new_value
-    with open("./data/times.json", 'w') as json_file:
+    with open("app/data/times.json", 'w') as json_file:
             json.dump(scores, json_file, indent=4)
             return 1
     return scores
@@ -87,6 +87,6 @@ def sort_scores() -> dict():
 def get_times_json() -> dict():
     scores = {}
     sort_scores()
-    with open("./data/times.json") as json_file:
+    with open("app/data/times.json") as json_file:
         scores = json.load(json_file)
     return scores

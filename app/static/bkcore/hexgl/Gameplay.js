@@ -242,7 +242,7 @@ bkcore.hexgl.Gameplay.prototype.save_score = function()
 		score: score_value
 	});
 
-	response.open("POST", "http://127.0.0.1:8000/user_data");
+	response.open("POST", "http://localhost:8000/user_data");
 	response.setRequestHeader("Accept", "application/json");
 	response.setRequestHeader("Content-Type", "application/json");
 	response.send(json);

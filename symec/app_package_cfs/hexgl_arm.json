@@ -1,0 +1,21 @@
+{
+    "@type": "EdgeAppPkg",
+    "appDId": "hexgl",
+    "appDescriptor": "{\n    \"appClientFacingPorts\": [\n        {\n            \"externalPort\": 30096,\n            \"innerPort\": 8000,\n            \"protocol\": \"TCP\"\n        }\n    ],\n    \"appDId\": \"hexgl\",\n    \"appDVersion\": \"1.0.0\",\n    \"appDescription\": \"https://hub.docker.com/repository/docker/jaxa/hexgl http://hexgl.bkcore.com\",\n    \"appDNSRule\": [\n        {\n            \"domainName\": \"hexgl\"\n        }\n    ],\n    \"appImage\": \"jaxa/hexgl:arm64\",\n    \"appName\": \"hexgl\",\n    \"appProvider\": \"jaxa\",\n    \"appSoftVersion\": \"1.0.0\",\n    \"swImageDescriptor\": {\n        \"checksum\": \"24a9e06765a1c70a10a34735360cd243d98c4f40c498df907fdda3a9ff8259f6\",\n        \"containerFormat\": \"docker-archive\",\n        \"diskFormat\": \"raw\",\n        \"name\": \"\",\n        \"size\": \"369970000\",\n        \"supportedVirtualisationEnvironment\": [\n            \"docker\"\n        ],\n        \"version\": \"1.0.0\"\n    },\n    \"virtualComputeDescriptor\": {\n        \"rootDiskSize\": 0,\n        \"virtualCpu\": {\n            \"cpuArchitecture\": \"arm64\",\n            \"numVirtualCpu\": 1.0\n        },\n        \"virtualMemory\": {\n            \"virtualMemSize\": 2048\n        }\n    }\n}",
+    "category": "CFS",
+    "relatedParty": [
+        {
+            "@referredType": "EndUser",
+            "id": "user_id"
+        }
+    ],
+    "serviceCharacteristic": [
+        {
+            "name": "appImage",
+            "value": "jaxa/hexgl:arm64",
+            "valueType": "String"
+        }
+    ],
+    "serviceType": "EdgeAppPkg",
+    "state": "active"
+}

@@ -1,5 +1,6 @@
 import logging
 import json
+import os
 import typing
 from pydantic import BaseModel
 
@@ -10,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 
-from utils import saved_user_score, get_scores, get_times_json, sort_scores
+from app.utils import saved_user_score, get_scores, get_times_json, sort_scores
 class UserData(BaseModel):
     nick: str
     score: int
@@ -20,22 +21,25 @@ app = FastAPI(title="HexGL")
 origins = [
     "http://localhost:8000/",
     "http://localhost:8000/user_data",
-    "http://127.0.0.1:8000/user_data"
+    "http://localhost:8000/times",
+    "http://127.0.0.1:8000/",
+    "http://127.0.0.1:8000/user_data",
+    "http://127.0.0.1:8000/times"
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["POST"],
-    allow_headers=["Content-Type"],
+    allow_methods=['POST', 'GET'],
+    allow_headers=['*'],
 )
 
-logging.basicConfig(level="DEBUG")
+logging.basicConfig(level="INFO")
 logger = logging.getLogger(__name__)
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="static")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+templates = Jinja2Templates(directory="app/static")
 
 
 @app.get("/", response_class=HTMLResponse())
