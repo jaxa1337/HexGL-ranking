@@ -14,7 +14,7 @@
             "domainName": "hexgl"
         }
     ],
-    "appImage": "jaxa/hexgl:arm64",
+    "appImage": "jaxa/hexgl:amd64",
     "appName": "hexgl",
     "appProvider": "jaxa",
     "appSoftVersion": "1.0.0",
@@ -32,7 +32,7 @@
     "virtualComputeDescriptor": {
         "rootDiskSize": 0,
         "virtualCpu": {
-            "cpuArchitecture": "arm64",
+            "cpuArchitecture": "amd64",
             "numVirtualCpu": 1.0
         },
         "virtualMemory": {

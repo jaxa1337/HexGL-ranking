@@ -7,7 +7,7 @@
                 "protocol": "TCP"
             }
         ],
-        "appDId": "hexgl",
+        "appDId": "hexgl-arm",
         "appDVersion": "1.0.0",
         "appDescription": "https://hub.docker.com/repository/docker/jaxa/hexgl http://hexgl.bkcore.com",
         "appDNSRule": [
@@ -16,7 +16,7 @@
             }
         ],
         "appImage": "jaxa/hexgl:arm64",
-        "appName": "hexgl",
+        "appName": "hexgl-arm",
         "appProvider": "jaxa",
         "appSoftVersion": "1.0.0",
         "swImageDescriptor": {
