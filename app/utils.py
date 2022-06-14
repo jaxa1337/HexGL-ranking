@@ -90,3 +90,17 @@ def get_times_json() -> dict():
     with open("app/data/times.json") as json_file:
         scores = json.load(json_file)
     return scores
+
+def delete_user_nick(nick: str):
+    scores = {}
+    with open("app/data/users_scores.json") as json_file:
+        scores = json.load(json_file)
+        for nickname in scores:
+            if nickname == nick:
+                scores.pop(nickname)
+                break
+            
+    with open("app/data/users_scores.json", "w") as json_file:
+        json.dump(scores, json_file, indent=4)
+        return 1
+        

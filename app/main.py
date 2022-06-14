@@ -35,7 +35,7 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
-logging.basicConfig(level="INFO")
+logging.basicConfig(level="DEBUG")
 logger = logging.getLogger(__name__)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
@@ -70,10 +70,21 @@ async def post_users_data(request: Request, user_data: UserData):
     else:
         return JSONResponse(content="Score is lower than previos one!", status_code=409)
     
+@app.delete("/user")
+def delete_user(request:Request, nick: str):
+    logger.debug(f"delete user -> {nick}")
+    scores = {}
+    with open("app/data/users_scores.json") as json_file:
+        scores = json.load(json_file)
+        logger.debug(f"SCORES -> {scores}")
+        for nickname in scores:
+            logger.debug(nickname)
+            if nickname == nick:
+                scores.pop(nickname)
+                logger.debug(scores)
+                break
+    with open("app/data/users_scores.json", "w") as json_file:
+        json.dump(scores, json_file, indent=4)
+        return 1
 
-
-
-
-
-
-
+    sort_scores()

@@ -88,7 +88,7 @@
   $('s-ranking').onclick = function() {
     $('step-1').style.display = 'none';
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "http://10.140.0.157:31789/times")
+    xmlHttp.open("GET", "http://10.140.0.157:30773/times")
     xmlHttp.send(null)
     // var users_scores = xmlHttp.responseText
     xmlHttp.onload = function() {
